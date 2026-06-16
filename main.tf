@@ -47,7 +47,7 @@ module "key_vault" {
   resource_group_name = azurerm_resource_group.main.name
   tags                = local.tags
   tenant_id           = data.azurerm_client_config.current.tenant_id
-  deployer_object_id  = data.azurerm_client_config.current.object_id
+
 }
 
 module "identity" {

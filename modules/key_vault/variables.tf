@@ -3,7 +3,7 @@ variable "location" { type = string }
 variable "resource_group_name" { type = string }
 variable "tags" { type = map(string) }
 variable "tenant_id" { type = string }
-variable "deployer_object_id" { type = string }
+
 
 variable "sample_secret_value" {
   type      = string
