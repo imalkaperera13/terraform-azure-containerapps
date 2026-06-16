@@ -18,17 +18,12 @@ resource "azurerm_key_vault" "main" {
   tags                       = var.tags
 }
 
-# Let the deployer (you) manage secrets via RBAC
-resource "azurerm_role_assignment" "deployer_secrets" {
-  scope                = azurerm_key_vault.main.id
-  role_definition_name = "Key Vault Secrets Officer"
-  principal_id         = var.deployer_object_id
-}
+
 
 resource "azurerm_key_vault_secret" "sample" {
   name         = "sample-app-secret"
   value        = var.sample_secret_value
   key_vault_id = azurerm_key_vault.main.id
 
-  depends_on = [azurerm_role_assignment.deployer_secrets] # role must exist before writing
+
 }
